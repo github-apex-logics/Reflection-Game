@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Throwable : MonoBehaviour
 {
-    Vector3 throwVector;
+    [HideInInspector] public Vector3 throwVector;
     [HideInInspector] public Rigidbody2D _rb;
     LineRenderer _lr;
     void Awake()
@@ -49,6 +49,7 @@ public class Throwable : MonoBehaviour
     }
     public void Throw()
     {
+        Debug.Log("Calculations = " + throwVector);
         _rb.AddForce(throwVector);
     }
 }

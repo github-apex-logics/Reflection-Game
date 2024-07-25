@@ -2,36 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScreenCollider : MonoBehaviour
+public class MirrorCollider : MonoBehaviour
 {
     EdgeCollider2D edgeCollder;
     void Awake()
     {
         edgeCollder = this.GetComponent<EdgeCollider2D>();
-        CreateEdgeCollider();
     }
-    //call this at start and whenever the resolution changes
-    void CreateEdgeCollider()
-    {
-        List<Vector2> edges = new List<Vector2>();
-        edges.Add(Camera.main.ScreenToWorldPoint(Vector2.zero));
-        edges.Add(Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)));
-        edges.Add(Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)));
-        edges.Add(Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)));
-        edges.Add(Camera.main.ScreenToWorldPoint(Vector2.zero));
-        edgeCollder.SetPoints(edges);
-    }
-    //runs when colliding if collider is Not set to Trigger
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         //Because of colliders default physics behaviour, and the timing of it
         //you have to use the rigidbody's velocity from the previous frame to avoid using a "post default interaction" velocity
         //Throwable.velocity allows for that if it's updated regularly (in Throwable.Update(), Path.VisualizePath() for example)
         Rigidbody2D collidingRB = collision.transform.GetComponent<Rigidbody2D>();
-        collidingRB.velocity = Vector3.Reflect(collision.transform.GetComponent<Throwable>()._rb.velocity, -collision.contacts[0].normal);
-        //collidingRB.velocity = Vector3.Reflect(collision.transform.position, -collision.contacts[0].normal);
+        //collidingRB.velocity = Vector3.Reflect(collision.transform.GetComponent<Throwable>()._rb.velocity, -collision.contacts[0].normal);
+        collidingRB.velocity = Vector3.Reflect(collision.transform.localPosition, -collision.contacts[0].normal);
 
     }
+
+
     //runs when colliding if collider set to Trigger
     void OnTriggerEnter2D(Collider2D collider)
     {
@@ -43,8 +33,10 @@ public class ScreenCollider : MonoBehaviour
         //Get normal of contact point by creating a line from the contact point to the closest collider point and rotating 90°
         Vector2 normal = Vector2.Perpendicular(contactPoint - GetClosestPoint(collider.transform.position)).normalized;
         //reflect the current velocity at the edge normal
-        colliderRB.velocity = Vector2.Reflect(colliderRB.velocity, normal);
+        colliderRB.velocity = Vector2.Reflect(collider.transform.localPosition, normal);
     }
+
+
     //Goes through edgeCollider Points and returns the one closest to position
     Vector2 GetClosestPoint(Vector2 position)
     {
