@@ -17,8 +17,11 @@ public class MirrorCollider : MonoBehaviour
         //Throwable.velocity allows for that if it's updated regularly (in Throwable.Update(), Path.VisualizePath() for example)
         Rigidbody2D collidingRB = collision.transform.GetComponent<Rigidbody2D>();
         //collidingRB.velocity = Vector3.Reflect(collision.transform.GetComponent<Throwable>()._rb.velocity, -collision.contacts[0].normal);
-        collidingRB.velocity = Vector3.Reflect(collision.transform.localPosition, -collision.contacts[0].normal);
 
+       
+        //collidingRB.velocity = Vector3.Reflect(collision.transform.position, -collision.contacts[0].normal);
+        Vector2 Direction = collision.transform.position - this.transform.position;
+       // collidingRB.velocity = Vector3.Reflect(collision.transform.position, -collision.contacts[0].normal);
     }
 
 
@@ -33,7 +36,7 @@ public class MirrorCollider : MonoBehaviour
         //Get normal of contact point by creating a line from the contact point to the closest collider point and rotating 90°
         Vector2 normal = Vector2.Perpendicular(contactPoint - GetClosestPoint(collider.transform.position)).normalized;
         //reflect the current velocity at the edge normal
-        colliderRB.velocity = Vector2.Reflect(collider.transform.localPosition, normal);
+        colliderRB.velocity = Vector2.Reflect(collider.transform.position, normal);
     }
 
 

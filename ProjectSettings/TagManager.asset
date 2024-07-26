@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Spawner
+  - Mirror
+  - Laser
+  - Absorber
   layers:
   - Default
   - TransparentFX
@@ -12,8 +15,8 @@ TagManager:
   - Laser
   - Water
   - UI
-  - 
-  - 
+  - Mirror
+  - Screen
   - 
   - 
   - 

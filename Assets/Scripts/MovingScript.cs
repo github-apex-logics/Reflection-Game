@@ -18,7 +18,7 @@ public class MovingScript : MonoBehaviour
             mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
-            this.gameObject.transform.localPosition = new Vector3(mousePos.x, mousePos.y, 0);
+            this.gameObject.transform.localPosition = new Vector3(mousePos.x - StartPosX, mousePos.y - StartPosY, 0);
         }
         
     }
@@ -31,6 +31,11 @@ public class MovingScript : MonoBehaviour
             Vector3 mousePos;
             mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+
+            StartPosX = mousePos.x - this.transform.localPosition.x;
+            StartPosY = mousePos.y - this.transform.localPosition.y;
+
+
 
             isBeingHeld = true;
         }

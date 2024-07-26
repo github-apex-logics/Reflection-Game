@@ -22,6 +22,7 @@ public class Spawner : MonoBehaviour
         LineDrawer = Instantiate(LinePrefab, Vector3.zero, Quaternion.identity);
         LineDrawer.GetComponent<LineFollow>().Ball = ball.transform;
 
+
         //ball.GetComponent<Throwable>().throwVector = -this.gameObject.transform.localPosition.normalized * 100;
         //ball.GetComponent<Throwable>().Throw();
     }
@@ -31,6 +32,8 @@ public class Spawner : MonoBehaviour
     {
         ball.GetComponent<Throwable>().throwVector = -this.gameObject.transform.localPosition.normalized * 250;
         ball.GetComponent<Throwable>().Throw();
+        LineDrawer.GetComponent<LineRenderer>().startWidth = 0.02f;
+        LineDrawer.GetComponent<LineRenderer>().endWidth = 0.02f;
     }
 
 }

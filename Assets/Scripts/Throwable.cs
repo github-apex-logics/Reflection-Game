@@ -7,10 +7,14 @@ public class Throwable : MonoBehaviour
     [HideInInspector] public Vector3 throwVector;
     [HideInInspector] public Rigidbody2D _rb;
     LineRenderer _lr;
+    [SerializeField] float speed;
     void Awake()
     {
         _rb = this.GetComponent<Rigidbody2D>();
         _lr = this.GetComponent<LineRenderer>();
+
+        _rb.isKinematic = true;
+        _rb.useFullKinematicContacts = true;
     }
     //onmouse events possible thanks to monobehaviour + collider2d
     void OnMouseDown()
@@ -50,6 +54,15 @@ public class Throwable : MonoBehaviour
     public void Throw()
     {
         Debug.Log("Calculations = " + throwVector);
-        _rb.AddForce(throwVector);
+        //_rb.AddForce(throwVector);
+        _rb.velocity = throwVector *speed* Time.deltaTime ;
+        
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //When we register a collision, we're going to get the first point of collision
+        //Then we just reflect our rigidbody about the contact normal, maintaining velocity
+        ContactPoint2D hit = collision.GetContact(0);
+        _rb.velocity = Vector2.Reflect(_rb.velocity, hit.normal);
     }
 }
