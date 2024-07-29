@@ -7,10 +7,18 @@ public class MovingScript : MonoBehaviour
 
     private float StartPosX;
     private float StartPosY;
+    Rigidbody2D rb;
+
 
     public bool isBeingHeld = false;
 
-    private void Update()
+    private void Start()
+    {
+        rb = this.gameObject.GetComponent<Rigidbody2D>();
+        
+    }
+
+    private void FixedUpdate()
     {
         if (isBeingHeld == true)
         {
@@ -18,10 +26,19 @@ public class MovingScript : MonoBehaviour
             mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
-            this.gameObject.transform.localPosition = new Vector3(mousePos.x - StartPosX, mousePos.y - StartPosY, 0);
+            Vector2 pos = new Vector2(mousePos.x - StartPosX, mousePos.y - StartPosY);
+            //this.gameObject.transform.localPosition = new Vector3(mousePos.x - StartPosX, mousePos.y - StartPosY, 0);
+            rb.MovePosition(pos);
+
         }
-        
     }
+
+
+    //private void Update()
+    //{
+        
+        
+    //}
 
 
     private void OnMouseDown()
@@ -48,7 +65,17 @@ public class MovingScript : MonoBehaviour
         isBeingHeld = false;
     }
 
+    private void OnMouseDrag()
+    {
+        if (isBeingHeld == true)
+        {
+            Vector3 mousePos;
+            mousePos = Input.mousePosition;
+            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
+            this.gameObject.transform.localPosition = new Vector3(mousePos.x - StartPosX, mousePos.y - StartPosY, 0);
+        }
+    }
 
 
 }

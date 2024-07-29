@@ -2118,7 +2118,6 @@ GameObject:
   - component: {fileID: 732592399}
   - component: {fileID: 732592403}
   - component: {fileID: 732592402}
-  - component: {fileID: 732592401}
   - component: {fileID: 732592400}
   m_Layer: 6
   m_Name: Mirror 1
@@ -2168,19 +2167,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.436364, y: 2.0036395}
   m_EdgeRadius: 0
---- !u!114 &732592401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732592398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c95fbbeae2d4e9408430b5bd69bc3e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isBeingHeld: 0
 --- !u!68 &732592402
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -3973,7 +3959,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimerTxt: {fileID: 462886297}
+  LevelText: {fileID: 0}
   GameCompPanel: {fileID: 1331667257}
+  GamePausePanel: {fileID: 0}
   Levels:
   - {fileID: 279161030}
   - {fileID: 1611171425}

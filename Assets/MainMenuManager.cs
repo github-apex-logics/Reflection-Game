@@ -17,7 +17,7 @@ public class MainMenuManager : MonoBehaviour
     void Start()
     {
         CurrentLevelno = PlayerPrefs.GetInt("Level",0);
-        UpdateLevelBtnsUI(CurrentLevelno);
+        //UpdateLevelBtnsUI(CurrentLevelno);
     }
 
 
@@ -33,9 +33,9 @@ public class MainMenuManager : MonoBehaviour
         }
     }
 
-    public void SelectLevel(int i)
+    public void SelectLevel()
     {
-        PlayerPrefs.SetInt("LevelToBePlayed",i);
+        PlayerPrefs.SetInt("LevelToBePlayed", CurrentLevelno);
         SceneManager.LoadScene("Gameplay");
     }
     

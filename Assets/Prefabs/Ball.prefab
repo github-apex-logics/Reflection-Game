@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1542684765906151264}
   - component: {fileID: 1542684765906151267}
   - component: {fileID: 1542684765906151266}
+  - component: {fileID: 5321586645448128651}
   - component: {fileID: 1542684765906151293}
   - component: {fileID: 1542684765906151292}
   - component: {fileID: 1542684765906151295}
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1542684765906151294}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7488832066869654731}
@@ -105,6 +106,58 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!60 &5321586645448128651
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542684765906151294}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.2, y: 0.2}
+    newSize: {x: 0.2, y: 0.2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.022903904, y: 0.08431506}
+      - {x: -0.051656403, y: 0.06989011}
+      - {x: -0.07047723, y: 0.05142607}
+      - {x: -0.079998955, y: 0.03214219}
+      - {x: -0.086052544, y: 0.007585479}
+      - {x: -0.08526186, y: -0.012830479}
+      - {x: -0.08190383, y: -0.025237849}
+      - {x: -0.07421874, y: -0.043664772}
+      - {x: -0.062999874, y: -0.058821734}
+      - {x: -0.054046553, y: -0.06833248}
+      - {x: -0.043981224, y: -0.074718975}
+      - {x: -0.031410925, y: -0.082733214}
+      - {x: -0.009257918, y: -0.08640403}
+      - {x: 0.006388507, y: -0.085744984}
+      - {x: 0.022623539, y: -0.08476112}
+      - {x: 0.036792107, y: -0.07819118}
+      - {x: 0.049243994, y: -0.07090479}
+      - {x: 0.062025014, y: -0.06074228}
+      - {x: 0.069136344, y: -0.051570956}
+      - {x: 0.079524815, y: -0.033329904}
+      - {x: 0.08421892, y: -0.021355765}
+      - {x: 0.08523734, y: -0.008806124}
+      - {x: 0.08491069, y: 0.014927067}
+      - {x: 0.07523681, y: 0.04166598}
+      - {x: 0.05961678, y: 0.060672965}
+      - {x: 0.030356333, y: 0.0809534}
+      - {x: 0.006188225, y: 0.08666597}
 --- !u!50 &1542684765906151293
 Rigidbody2D:
   serializedVersion: 4
@@ -239,7 +292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   throwVector: {x: 0, y: 0, z: 0}
   _rb: {fileID: 0}
-  speed: 0.5
+  speed: 0.2
 --- !u!1 &1715357898697636903
 GameObject:
   m_ObjectHideFlags: 0

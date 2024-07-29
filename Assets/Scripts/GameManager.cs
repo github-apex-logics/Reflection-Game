@@ -10,14 +10,21 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public Text TimerTxt;
+    public Text LevelText;
 
     public GameObject GameCompPanel;
+    public GameObject GamePausePanel;
+
+
 
     public GameObject[] Levels;
 
     public GameObject[] Spawners;
     public GameObject[] Mirrors;
     public GameObject[] Absorbers;
+
+    public GameObject MidCircleBoundary;
+
 
 
     public float targetTime;
@@ -68,8 +75,8 @@ public class GameManager : MonoBehaviour
 
         foreach (GameObject mirror in Mirrors)
         {
-            mirror.GetComponent<BoxCollider2D>().enabled = false;
-            mirror.GetComponent<PolygonCollider2D>().enabled = true;
+            mirror.GetComponent<PolygonCollider2D>().isTrigger = false;
+
             mirror.AddComponent<MirrorCollider>();
         }
 
@@ -79,6 +86,8 @@ public class GameManager : MonoBehaviour
             absorber.GetComponent<PolygonCollider2D>().enabled = true;
             absorber.AddComponent<Absorber>();
         }
+
+        MidCircleBoundary.GetComponent<PolygonCollider2D>().enabled = false;
 
         startTimer = true;
     }
@@ -91,6 +100,7 @@ public class GameManager : MonoBehaviour
     public void TurnOnLevel()
     {
         Levels[PlayerPrefs.GetInt("LevelToBePlayed")].SetActive(true);
+        LevelText.text = (PlayerPrefs.GetInt("LevelToBePlayed") + 1).ToString();
     }
 
 
@@ -109,5 +119,21 @@ public class GameManager : MonoBehaviour
         
         Restart();
     }
+
+    public void Pause()
+    {
+        GamePausePanel.SetActive(true);
+        Time.timeScale = 0;
+
+    }
+
+    public void Resume()
+    {
+        GamePausePanel.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+
+
 
 }
