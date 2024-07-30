@@ -53,6 +53,17 @@ public class GameManager : MonoBehaviour
                     laser.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
                 }
                 startTimer = false;
+
+                if (PlayerPrefs.GetInt("LevelToBePlayed") == 4)
+                {
+                    PlayerPrefs.SetInt("Level", 0);
+                    PlayerPrefs.SetInt("LevelToBePlayed", 0);
+                }
+                else
+                {
+                    PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
+                    PlayerPrefs.SetInt("LevelToBePlayed", PlayerPrefs.GetInt("LevelToBePlayed") + 1);
+                }
             }
             
         }
@@ -82,8 +93,8 @@ public class GameManager : MonoBehaviour
 
         foreach (GameObject absorber in Absorbers)
         {
-            absorber.GetComponent<BoxCollider2D>().enabled = false;
-            absorber.GetComponent<PolygonCollider2D>().enabled = true;
+            //absorber.GetComponent<BoxCollider2D>().enabled = false;
+            absorber.GetComponent<PolygonCollider2D>().isTrigger = true;
             absorber.AddComponent<Absorber>();
         }
 
@@ -118,7 +129,7 @@ public class GameManager : MonoBehaviour
         }
         
         Restart();
-    }
+    } //not using it
 
     public void Pause()
     {
@@ -133,7 +144,11 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-
+    public void Home()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MainMenu");
+    }
 
 
 }
