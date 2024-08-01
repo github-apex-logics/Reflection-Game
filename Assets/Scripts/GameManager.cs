@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        Application.targetFrameRate = -1;
         Spawners = GameObject.FindGameObjectsWithTag("Spawner");
         Mirrors = GameObject.FindGameObjectsWithTag("Mirror");
         Absorbers = GameObject.FindGameObjectsWithTag("Absorber");
