@@ -30,10 +30,10 @@ public class Spawner : MonoBehaviour
 
     public void StartLaser()
     {
-        ball.GetComponent<Throwable>().throwVector = -this.gameObject.transform.localPosition.normalized * 500;
+        ball.GetComponent<Throwable>().throwVector = -this.gameObject.transform.localPosition.normalized * 1000;
         ball.GetComponent<Throwable>().Throw();
-        LineDrawer.GetComponent<LineRenderer>().startWidth = 0.02f;
-        LineDrawer.GetComponent<LineRenderer>().endWidth = 0.02f;
+        LineDrawer.GetComponent<LineRenderer>().startWidth = 0.05f;
+        LineDrawer.GetComponent<LineRenderer>().endWidth = 0.05f;
     }
 
 }
