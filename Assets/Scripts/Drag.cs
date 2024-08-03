@@ -8,6 +8,7 @@ public class Drag : MonoBehaviour
     private Rigidbody2D rb;
     private Vector3 targetPosition;
     public bool isDragging = false;
+   
 
     void Start()
     {
@@ -31,6 +32,14 @@ public class Drag : MonoBehaviour
         isDragging = false;
         rb.isKinematic = true;
         rb.bodyType = RigidbodyType2D.Static;
+
+        // Snap to grid if close enough
+        float gridSize = .5f;
+        float newX = Mathf.RoundToInt(transform.position.x / gridSize) * gridSize;
+        float newY = Mathf.RoundToInt(transform.position.y / gridSize) * gridSize;
+
+
+            transform.position = new Vector3(newX, newY, transform.position.z);
     }
 
     void FixedUpdate()
