@@ -26,8 +26,8 @@ public class LineFollow : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
 
         // Initialize the LineRenderer
-        lineRenderer.startWidth = 0.1f;
-        lineRenderer.endWidth = 0.1f;
+        lineRenderer.startWidth = .1f;
+        lineRenderer.endWidth = .1f;
         lineRenderer.positionCount = 1;
         lineRenderer.SetPosition(0, Ball.position);
     }
