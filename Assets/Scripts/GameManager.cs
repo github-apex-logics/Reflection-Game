@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -16,26 +14,148 @@ public class GameManager : MonoBehaviour
     public GameObject GamePausePanel;
 
 
-
     public GameObject[] Levels;
 
     public GameObject[] Spawners;
     public GameObject[] Mirrors;
     public GameObject[] Absorbers;
+    public Transform[] RandomPos;
+
+
 
     public GameObject MidCircleBoundary;
-
+    public GameObject MidCircle;
 
 
     public float targetTime;
     [HideInInspector] public bool startTimer = false;
-
+    int TotalMA;
+    int TotalMirrors;
+    int TotalAbsorbers;
 
     private void Start()
     {
         Instance = this;
-        TurnOnLevel();
+        //TurnOnLevel();
+
+        Application.targetFrameRate = -1;
+        //Spawners = GameObject.FindGameObjectsWithTag("Spawner");
+        //Mirrors = GameObject.FindGameObjectsWithTag("Mirror");
+        //Absorbers = GameObject.FindGameObjectsWithTag("Absorber");
+
+        SetMirrors();
+        SetAbsorbers();
+
+
+
+        TotalMA = TotalMirrors + TotalAbsorbers;
+
+        SetSpawners();
+
     }
+
+    void SetSpawners()
+    {
+        int TotalSpawners = Random.Range(0, Spawners.Length);
+
+        if(TotalSpawners > TotalMA)
+        {
+            SetSpawners();
+            return;
+        }
+        
+        int SpawnerCount = 0;
+        for (int i = 0; i < Spawners.Length; i++)
+        {
+            if (SpawnerCount <= TotalSpawners)
+            {
+                int num = Random.Range(0, Spawners.Length);
+                if (Spawners[num].activeInHierarchy == false)
+                {
+                    Spawners[num].SetActive(true);
+                    SpawnerCount++;
+                }
+            }
+        }
+    }
+
+    void SetMirrors()
+    {
+        float x;
+        float y;
+
+        TotalMirrors = Random.Range(0, Mirrors.Length);
+        int MirrorCount = 0;
+        foreach (GameObject mirror in Mirrors)
+        {
+            x = Random.Range(3.63f, -3.63f);
+            y = Random.Range(3.95f, -3.95f);
+            mirror.transform.position = new Vector3(x, y, 0);
+        }
+
+        for (int i = 0; i <= TotalMirrors; i++)
+        {
+            if (MirrorCount <= TotalMirrors)
+            {
+                int num = Random.Range(0, Mirrors.Length);
+                if (Mirrors[num].activeInHierarchy == false)
+                {
+                    Mirrors[num].SetActive(true);
+                    MirrorCount++;
+                }
+            }
+        }
+
+        foreach (GameObject mirror in Mirrors) //bounds.Intersects(collider2.bounds) IsTouching(MidCircleBoundary.GetComponent<PolygonCollider2D>()
+        {
+            if (mirror.GetComponent<PolygonCollider2D>().bounds.Intersects(MidCircleBoundary.GetComponent<PolygonCollider2D>().bounds) || mirror.GetComponent<PolygonCollider2D>().bounds.Intersects(MidCircle.GetComponent<CircleCollider2D>().bounds))
+            {
+                mirror.transform.position = RandomPos[Random.Range(0, RandomPos.Length)].position;
+            }
+        }
+
+    }
+
+    
+
+    void SetAbsorbers()
+    {
+        float x;
+        float y;
+
+
+        TotalAbsorbers = Random.Range(0, Absorbers.Length);
+        int AbsorberCount = 0;
+        foreach (GameObject absorber in Absorbers)
+        {
+            x = Random.Range(3.63f, -3.63f);
+            y = Random.Range(3.95f, -3.95f);
+            absorber.transform.position = new Vector3(x, y, 0);
+        }
+
+        for (int i = 0; i < Absorbers.Length; i++)
+        {
+            if (AbsorberCount <= TotalAbsorbers)
+            {
+                int num = Random.Range(0, Absorbers.Length);
+                if (Absorbers[num].activeInHierarchy == false)
+                {
+                    Absorbers[num].SetActive(true);
+                    AbsorberCount++;
+                }
+            }
+        }
+
+        foreach (GameObject absorber in Absorbers)
+        {
+            if (absorber.GetComponent<PolygonCollider2D>().bounds.Intersects(MidCircleBoundary.GetComponent<PolygonCollider2D>().bounds) || absorber.GetComponent<PolygonCollider2D>().bounds.Intersects(MidCircle.GetComponent<CircleCollider2D>().bounds))
+            {
+                absorber.transform.position = RandomPos[Random.Range(0, RandomPos.Length)].position;
+            }
+        }
+    }
+
+
 
     private void Update()
     {
@@ -73,23 +193,19 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        Application.targetFrameRate = -1;
-        Spawners = GameObject.FindGameObjectsWithTag("Spawner");
-        Mirrors = GameObject.FindGameObjectsWithTag("Mirror");
-        Absorbers = GameObject.FindGameObjectsWithTag("Absorber");
-
-
-
         foreach (GameObject Spawner in Spawners)
         {
-            Spawner.GetComponent<Spawner>().StartLaser();
+            if (Spawner.activeInHierarchy == true)
+            {
+                Spawner.GetComponent<Spawner>().StartLaser();
+            }
         }
 
         foreach (GameObject mirror in Mirrors)
         {
             mirror.GetComponent<PolygonCollider2D>().isTrigger = false;
 
-            mirror.AddComponent<MirrorCollider>();
+            //mirror.AddComponent<MirrorCollider>();
         }
 
         foreach (GameObject absorber in Absorbers)
@@ -100,6 +216,8 @@ public class GameManager : MonoBehaviour
         }
 
         MidCircleBoundary.GetComponent<PolygonCollider2D>().enabled = false;
+        MidCircleBoundary.GetComponent<SpriteRenderer>().enabled = false;
+
 
         startTimer = true;
     }

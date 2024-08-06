@@ -53,9 +53,8 @@ public class Throwable : MonoBehaviour
     }
     public void Throw()
     {
-        Debug.Log("Calculations = " + throwVector);
         //_rb.AddForce(throwVector);
-        _rb.velocity = throwVector *speed* Time.deltaTime ;
+        _rb.velocity = throwVector *speed* Time.deltaTime;
         
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -63,6 +62,6 @@ public class Throwable : MonoBehaviour
         //When we register a collision, we're going to get the first point of collision
         //Then we just reflect our rigidbody about the contact normal, maintaining velocity
         ContactPoint2D hit = collision.GetContact(0);
-        _rb.velocity = Vector2.Reflect(_rb.velocity, hit.normal);
+        _rb.velocity = Vector2.Reflect(_rb.velocity, hit.normal); //hit.normal
     }
 }

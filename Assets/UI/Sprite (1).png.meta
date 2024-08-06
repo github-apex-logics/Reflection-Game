@@ -3,7 +3,7 @@ guid: 826ee9c5c2f8a1949a6559adaeec868c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,6 +64,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -75,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -87,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 1
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -99,6 +103,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -111,6 +116,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -123,6 +129,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -135,6 +142,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1514,7 +1522,7 @@ TextureImporter:
         width: 354
         height: 141
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1535,7 +1543,7 @@ TextureImporter:
         width: 546
         height: 108
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1543,6 +1551,69 @@ TextureImporter:
       bones: []
       spriteID: 1b0a8413721fb384780efd29a2e4829b
       internalID: 2147433093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite (1)_16
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 629
+        width: 46
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da083bc81ec65ec40b8776cd1c48a2b5
+      internalID: -120784613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite (1)_18
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 802
+        width: 88
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d6d731878e0288419da296efbd188b5
+      internalID: -1736243294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite (1)_23
+      rect:
+        serializedVersion: 2
+        x: 3057
+        y: 1303
+        width: 117
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c80aa7a16d6e71245a01c6eb8f3d37e2
+      internalID: 1126958559
       vertices: []
       indices: 
       edges: []
@@ -1641,9 +1712,8 @@ TextureImporter:
       Sprite (1)_81: -606618848
       Sprite (1)_82: -1939827824
       Sprite (1)_9: 1645559161
-  spritePackingTag: 
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

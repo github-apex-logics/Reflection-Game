@@ -21,7 +21,7 @@ public class MirrorCollider : MonoBehaviour
        
         //collidingRB.velocity = Vector3.Reflect(collision.transform.position, -collision.contacts[0].normal);
         Vector2 Direction = collision.transform.position - this.transform.position;
-       // collidingRB.velocity = Vector3.Reflect(collision.transform.position, -collision.contacts[0].normal);
+        //collidingRB.velocity = Vector3.Reflect(collision.gameObject.GetComponent<Rigidbody2D>().velocity, -collision.contacts[0].normal);
     }
 
 

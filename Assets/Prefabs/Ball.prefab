@@ -342,7 +342,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   throwVector: {x: 0, y: 0, z: 0}
   _rb: {fileID: 0}
-  speed: 0.2
+  speed: 0.25
 --- !u!1 &1715357898697636903
 GameObject:
   m_ObjectHideFlags: 0

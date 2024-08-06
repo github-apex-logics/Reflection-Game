@@ -8,6 +8,8 @@ TagManager:
   - Mirror
   - Laser
   - Absorber
+  - MidCircleBoundary
+  - MidCircle
   layers:
   - Default
   - TransparentFX

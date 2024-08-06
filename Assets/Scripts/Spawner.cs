@@ -19,6 +19,7 @@ public class Spawner : MonoBehaviour
     {
         Instance = this;
         ball = Instantiate(BallPrefab, Tip.position, Quaternion.identity);
+        ball.transform.rotation = Tip.rotation;
         LineDrawer = Instantiate(LinePrefab, Vector3.zero, Quaternion.identity);
         LineDrawer.GetComponent<LineFollow>().Ball = ball.transform;
 
@@ -30,7 +31,11 @@ public class Spawner : MonoBehaviour
 
     public void StartLaser()
     {
-        ball.GetComponent<Throwable>().throwVector = -this.gameObject.transform.localPosition.normalized * 1500;
+        Vector3 direction = -this.gameObject.transform.localPosition.normalized;
+        Quaternion rotation = this.gameObject.transform.rotation;
+        Vector3 rotatedDirection = rotation * direction;
+
+        ball.GetComponent<Throwable>().throwVector = rotatedDirection * 500;
         ball.GetComponent<Throwable>().Throw();
         LineDrawer.GetComponent<LineRenderer>().startWidth = 0.075f;
         LineDrawer.GetComponent<LineRenderer>().endWidth = 0.075f;
